@@ -36,7 +36,15 @@
 <body class="hold-transition login-page"> 
 <div class="login-box">
   <div class="login-logo">
-    <a><b>ROHIS BANDAR LAMPUNG</b></a>
+    
+  <div class="row">
+        <div class="col-xs-3">
+          <img src="{{ asset('images/fkar.png') }}" height="125" width="100">
+        </div>
+        <div class="col-xs-9" style=" padding-top: 15px;">
+          <a><b>ROHIS <br></b></a><a style="font-size: 30px">BANDAR LAMPUNG</a> 
+        </div>
+  </div>
   </div>
   <!-- /.login-logo -->
   <div class="login-box-body">

@@ -4,6 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>{{ config('app.name', 'Laravel') }}</title>
+    <link rel="shortcut icon" href="{{ asset('images/fkar.png') }}">
     <meta name="csrf-token" content="{{ csrf_token() }}">
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
@@ -35,7 +36,14 @@
 <body class="hold-transition register-page">
 <div class="register-box">
   <div class="register-logo">
-    <a><b>ROHIS BANDAR LAMPUNG</b></a>
+  <div class="row">
+        <div class="col-xs-3">
+          <img src="{{ asset('images/fkar.png') }}" height="125" width="100">
+        </div>
+        <div class="col-xs-9" style=" padding-top: 15px;">
+          <a><b>ROHIS <br></b></a><a style="font-size: 30px">BANDAR LAMPUNG</a> 
+        </div>
+  </div>
   </div>
 
   <div class="register-box-body">

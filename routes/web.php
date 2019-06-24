@@ -19,6 +19,6 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index');
  
-	Route::group(['prefix'=>'admin','middleware'=>['auth']], function () {
+	Route::group(['prefix'=>'master-data','middleware'=>['auth', 'role:admin']], function () {
 		Route::resource('data-sekolah','DataSekolahControllers'); 
 	}); 
