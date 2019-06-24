@@ -108,48 +108,34 @@
     <!-- sidebar menu: : style can be found in sidebar.less -->
     <ul class="sidebar-menu" data-widget="tree">
       <li class="header">MAIN NAVIGATION</li>
-      <li class="active treeview">
-        <a href="#">
-          <i class="fa fa-dashboard"></i> <span>Dashboard</span> 
-        </a> 
+      <li class="tree">
+        <a href="{{ url('home') }}"><i class="fa fa-dashboard"></i>Dashboard</a> 
       </li> 
+
+      @role('admin')  
       <li class="treeview">
-          <a href="#">
-            <i class="fa fa-th"></i>
-            <span>Master Data</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="pages/charts/chartjs.html"><i class="fa fa-circle-o"></i>Data Sekolah</a></li> 
-            <li><a href="pages/charts/chartjs.html"><i class="fa fa-circle-o"></i>User</a></li> 
-          </ul>
-        </li>
+            <a href="#">
+              <i class="fa fa-th"></i>
+              <span>Master Data</span>
+              <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+              </span>
+            </a>
+            <ul class="treeview-menu">
+              <li><a href="{{ route('data-sekolah.index') }}"><i class="fa fa-circle-o"></i>Data Sekolah</a></li> 
+              <li><a href="pages/charts/chartjs.html"><i class="fa fa-circle-o"></i>User</a></li> 
+            </ul>
+      </li>
+      @endrole
     </ul>
+
   </section>
   <!-- /.sidebar -->
 </aside>
 
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
-  <!-- Content Header (Page header) -->
-  <section class="content-header">
-    <h1>
-      Dashboard
-      <small>Control panel</small>
-    </h1>
-    <ol class="breadcrumb">
-      <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-      <li class="active">Dashboard</li>
-    </ol>
-  </section>
-
-  <!-- Main content -->
-  <section class="content"> 
         @yield('content')
-  </section>
-  <!-- /.content -->
 </div> 
  
 </div>
@@ -175,11 +161,27 @@
   $.widget.bridge('uibutton', $.ui.button);
 </script>
 <script src="{{ asset('plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js') }}"></script>
+<script src="{{ asset('dist/js/pages/dashboard.js') }}"></script>
 <script src="{{ asset('bower_components/jquery-slimscroll/jquery.slimscroll.min.js') }}"></script>
 <script src="{{ asset('bower_components/fastclick/lib/fastclick.js') }}"></script>
 <script src="{{ asset('dist/js/adminlte.min.js') }}"></script>
-<script src="{{ asset('dist/js/pages/dashboard.js') }}"></script>
-<script src="{{ asset('dist/js/demo.js') }}"></script> 
+<script src="{{ asset('dist/js/demo.js') }}"></script>  
+<!-- DataTables -->
+<script src="{{ asset('bower_components/datatables.net/js/jquery.dataTables.min.js') }}"></script>
+<script src="{{ asset('bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js') }}"></script> 
+
 @yield('scripts')
+<script>
+  $(function () { 
+    $('#html').DataTable({
+      'paging'      : true,
+      'lengthChange': false,
+      'searching'   : false,
+      'ordering'    : true,
+      'info'        : true,
+      'autoWidth'   : false
+    })
+  })
+</script>
 </body>
 </html>
