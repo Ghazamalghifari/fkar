@@ -26,7 +26,7 @@ class CreateUsersTable extends Migration
             $table->string('kategori_daftar')->nullable();
             $table->string('jenis_kelamin')->nullable();
             $table->string('status')->nullable();
-            $table->integer('no_wa')->nullable();
+            $table->string('no_wa')->nullable();
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();

@@ -79,7 +79,7 @@
       </div>
         
       <div class="form-group{{ $errors->has('golongan_darah') ? ' has-error' : '' }} has-feedback">
-        {!! Form::select('golongan_darah', ['1 SMA'=>'1 SMA','2 SMA'=>'2 SMA','3 SMA'=>'3 SMA'],null,['class'=>'form-control select2','style'=>'width: 100%;', 'placeholder' => 'Pilih Golongan Darah']) !!}  
+        {!! Form::select('golongan_darah', ['O'=>'O','A'=>'A','B'=>'B','AB'=>'AB'],null,['class'=>'form-control select2','style'=>'width: 100%;', 'placeholder' => 'Pilih Golongan Darah']) !!}  
       </div>
 
       <div class="form-group{{ $errors->has('no_wa') ? ' has-error' : '' }} has-feedback">

@@ -54,11 +54,11 @@ class RegisterController extends Controller
             'alamat' => 'required',
             'id_sekolah' => 'required',
             'kelas' => 'required',
-            'golongan_darah' => 'required',
-            'kategori_daftar' => 'required',
+            'golongan_darah' => 'required', 
             'no_wa' => 'required',
             'email' => 'required|email|max:255|unique:users'
         ]);
+         
     }
 
     /**
@@ -70,6 +70,8 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         $password = '2019';
+        $kategori_daftar = 'Baru';
+        
         $user = User::create([
             'name' => $data['name'],
             'tanggal_lahir' => $data['tanggal_lahir'],
@@ -77,7 +79,7 @@ class RegisterController extends Controller
             'id_sekolah' => $data['id_sekolah'],
             'kelas' => $data['kelas'],
             'golongan_darah' => $data['golongan_darah'],
-            'kategori_daftar' => $data['kategori_daftar'],
+            'kategori_daftar' => $kategori_daftar,
             'no_wa' => $data['no_wa'], 
             'email' => $data['email'], 
             'password' => bcrypt($password),
