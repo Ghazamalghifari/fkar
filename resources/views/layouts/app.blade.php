@@ -113,6 +113,9 @@
       </li> 
 
       @role('admin')  
+      <li class="tree">
+        <a href="{{ url('data-anggota') }}"><i class="fa fa-dashboard"></i>Anggota Rohis</a> 
+      </li> 
       <li class="treeview">
             <a href="#">
               <i class="fa fa-th"></i>
@@ -123,7 +126,7 @@
             </a>
             <ul class="treeview-menu">
               <li><a href="{{ route('data-sekolah.index') }}"><i class="fa fa-circle-o"></i>Data Sekolah</a></li> 
-              <li><a href="pages/charts/chartjs.html"><i class="fa fa-circle-o"></i>User</a></li> 
+              <li><a href="{{ route('data-users.index') }}"><i class="fa fa-circle-o"></i>User</a></li> 
             </ul>
       </li>
       @endrole

@@ -17,7 +17,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'id_rohis','name','email', 'tanggal_lahir','alamat','id_sekolah','kelas','golongan_darah','kategori_daftar','no_wa', 'password','status','jenis_kelamin'
     ];
 
     /**
@@ -28,4 +28,14 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+    
+      public function data_sekolah()
+    {
+        return $this->hasOne('App\DataSekolah', 'id', 'id_sekolah');
+    }
+    
+    public function role()
+          {
+            return $this->hasOne('App\User_otoritas','user_id','id');
+          }   
 }

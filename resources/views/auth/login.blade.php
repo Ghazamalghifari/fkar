@@ -48,7 +48,7 @@
   </div>
   <!-- /.login-logo -->
   <div class="login-box-body">
-    <p class="login-box-msg">Sign in to start your session</p>
+    <p class="login-box-msg">Login sebagai anggota rohis.</p>
     <form class="form-horizontal" role="form" method="POST" action="{{ url('/login') }}">
                         {{ csrf_field() }}
       <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }} has-feedback">
@@ -63,7 +63,7 @@
         <div class="col-xs-8">
           <div class="checkbox icheck">
             <label>
-              <input type="checkbox"> Remember Me
+              <input type="checkbox"> Ingatkan saya.
             </label>
           </div>
         </div>
@@ -76,8 +76,8 @@
     </form>
  
 
-    <a href="{{ url('/password/reset') }}">I forgot my password</a><br>
-    <a href="{{ url('/register') }}" class="text-center">Register a new membership</a>
+    <a href="{{ url('/password/reset') }}">Saya lupa kata sandi saya</a><br>
+    <a href="{{ url('/register') }}" class="text-center">Daftar Sebagai Anggota Rohis.</a>
 
   </div>
   <!-- /.login-box-body -->

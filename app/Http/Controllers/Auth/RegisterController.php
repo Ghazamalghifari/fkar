@@ -50,8 +50,14 @@ class RegisterController extends Controller
     {
         return Validator::make($data, [
             'name' => 'required|max:255',
-            'email' => 'required|email|max:255|unique:users',
-            'password' => 'required|min:6|confirmed',
+            'tanggal_lahir' => 'required',
+            'alamat' => 'required',
+            'id_sekolah' => 'required',
+            'kelas' => 'required',
+            'golongan_darah' => 'required',
+            'kategori_daftar' => 'required',
+            'no_wa' => 'required',
+            'email' => 'required|email|max:255|unique:users'
         ]);
     }
 
@@ -63,11 +69,20 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        $user =  User::create([
+        $password = '2019';
+        $user = User::create([
             'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => bcrypt($data['password']),
+            'tanggal_lahir' => $data['tanggal_lahir'],
+            'alamat' => $data['alamat'],
+            'id_sekolah' => $data['id_sekolah'],
+            'kelas' => $data['kelas'],
+            'golongan_darah' => $data['golongan_darah'],
+            'kategori_daftar' => $data['kategori_daftar'],
+            'no_wa' => $data['no_wa'], 
+            'email' => $data['email'], 
+            'password' => bcrypt($password),
         ]);
+         
         
         $memberRole = Role::where('name', 'member')->first();
         $user->attachRole($memberRole);

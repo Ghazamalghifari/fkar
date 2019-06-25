@@ -3,6 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Yajra\Datatables\Html\Builder;
+use Yajra\Datatables\Datatables;
+use Session;
+use App\User;
+use App\DataSekolah;
 
 class HomeController extends Controller
 {
@@ -23,6 +28,20 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $datasekolah = DataSekolah::count();
+        $jumlahanggota = User::count();
+        return view('home', ['datasekolah' => $datasekolah,'jumlahanggota' => $jumlahanggota]);
+    }
+
+    
+    public function jumlah_sekolah(Request $request, Builder $htmlBuilder)
+    {
+        if ($request->ajax()) {
+            $datasekolah = DataSekolah::select(['id','nama_sekolah']);
+            return Datatables::of($datasekolah)->make(true);
+        }
+        $html = $htmlBuilder
+         ->addColumn(['data' => 'nama_sekolah', 'name' => 'nama_sekolah', 'title' => 'Nama Sekolah']);
+         return view('jumlahsekolah')->with(compact('html'));   
     }
 }
