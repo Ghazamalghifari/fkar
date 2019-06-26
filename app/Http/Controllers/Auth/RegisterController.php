@@ -71,6 +71,7 @@ class RegisterController extends Controller
     {
         $password = '2019';
         $kategori_daftar = 'Baru';
+        $status = 'anggotarohis';
         
         $user = User::create([
             'name' => $data['name'],
@@ -80,12 +81,13 @@ class RegisterController extends Controller
             'kelas' => $data['kelas'],
             'golongan_darah' => $data['golongan_darah'],
             'kategori_daftar' => $kategori_daftar,
+            'jenis_kelamin' => $data['jenis_kelamin'], 
             'no_wa' => $data['no_wa'], 
             'email' => $data['email'], 
+            'status' => $status,
             'password' => bcrypt($password),
         ]);
-         
-        
+          
         $memberRole = Role::where('name', 'member')->first();
         $user->attachRole($memberRole);
         return $user; 

@@ -4,11 +4,11 @@
   <!-- Content Header (Page header) -->
   <section class="content-header">
     <h1>
-    Data Anggota 
+    Data Anggota Rohis 
     </h1>
     <ol class="breadcrumb">
       <li><a href="{{ url('/home') }}"><i class="fa fa-dashboard"></i> Dashboard</a></li> 
-      <li class="active">Data Anggota</li>
+      <li class="active">Data Anggota Rohis</li>
     </ol>
   </section>
   

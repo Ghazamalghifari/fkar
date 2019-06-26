@@ -29,7 +29,7 @@ class DataAnggotaControllers extends Controller
          $html = $htmlBuilder
           ->addColumn(['data' => 'id', 'name' => 'id', 'title' => 'Id'])
           ->addColumn(['data' => 'action', 'name'=>'action','title'=>'', 'orderable'=>false, 'searchable'=>false]);
-          return view('data_sekolah.index')->with(compact('html'));   
+          return view('data_anggota.index')->with(compact('html'));   
       }
      /**
       * Show the form for creating a new resource.

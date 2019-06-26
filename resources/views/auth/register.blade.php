@@ -82,6 +82,10 @@
         {!! Form::select('golongan_darah', ['O'=>'O','A'=>'A','B'=>'B','AB'=>'AB'],null,['class'=>'form-control select2','style'=>'width: 100%;', 'placeholder' => 'Pilih Golongan Darah']) !!}  
       </div>
 
+      <div class="form-group{{ $errors->has('jenis_kelamin') ? ' has-error' : '' }} has-feedback">
+        {!! Form::select('jenis_kelamin', ['Laki-Laki'=>'Laki-Laki','Perempuan'=>'Perempuan'],null,['class'=>'form-control select2','style'=>'width: 100%;', 'placeholder' => 'Pilih Jenis Kelamin']) !!}  
+      </div>
+
       <div class="form-group{{ $errors->has('no_wa') ? ' has-error' : '' }} has-feedback">
         <input id="no_wa" type="number" class="form-control" name="no_wa" value="{{ old('no_wa') }}" required autofocus placeholder="Nomor WhatsApp">
         <span class="glyphicon glyphicon-earphone form-control-feedback"></span>
