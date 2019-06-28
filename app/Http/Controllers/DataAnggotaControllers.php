@@ -15,7 +15,7 @@ class DataAnggotaControllers extends Controller
      public function index(Request $request, Builder $htmlBuilder)
      {
          if ($request->ajax()) {
-             $data_anggota = User::with(['data_sekolah']);
+             $data_anggota = User::with(['data_sekolah'])->where('status','anggotarohis');
              return Datatables::of($data_anggota)
                  ->addColumn('action', function($data_anggotas){
                      return view('datatable._action', [
@@ -28,6 +28,10 @@ class DataAnggotaControllers extends Controller
          }
          $html = $htmlBuilder
           ->addColumn(['data' => 'id', 'name' => 'id', 'title' => 'Id'])
+          ->addColumn(['data' => 'name', 'name' => 'name', 'title' => 'Nama'])
+          ->addColumn(['data' => 'data_sekolah.nama_sekolah', 'name' => 'data_sekolah.nama_sekolah', 'title' => 'Sekolah'])
+          ->addColumn(['data' => 'kelas', 'name' => 'kelas', 'title' => 'Kelas'])
+          ->addColumn(['data' => 'no_wa', 'name' => 'no_wa', 'title' => 'Nomor Handphone'])
           ->addColumn(['data' => 'action', 'name'=>'action','title'=>'', 'orderable'=>false, 'searchable'=>false]);
           return view('data_anggota.index')->with(compact('html'));   
       }

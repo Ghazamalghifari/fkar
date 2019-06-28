@@ -37,16 +37,16 @@
   <!-- Google Font -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
-<body class="hold-transition register-page">
+<body background="{{ asset('images/login-bg.jpg') }}"  > 
 <div class="register-box">
   <div class="register-logo">
   <div class="row">
         <div class="col-xs-3">
           <img src="{{ asset('images/fkar.png') }}" height="125" width="100">
         </div>
-        <div class="col-xs-9" style=" padding-top: 15px;">
-          <a><b>ROHIS <br></b></a><a style="font-size: 30px">BANDAR LAMPUNG</a> 
-        </div>
+          <div class="col-xs-9" style=" padding-top: 2px;">
+            <a><b style="font-size: 50px;color:white;">ROHIS <br></b></a><b style="font-size: 28px;color:white;">BANDAR LAMPUNG</b> 
+          </div>
   </div>
   </div>
 
@@ -75,7 +75,7 @@
       </div> 
               
       <div class="form-group{{ $errors->has('kelas') ? ' has-error' : '' }} has-feedback">
-        {!! Form::select('kelas', ['1 SMA'=>'1 SMA','2 SMA'=>'2 SMA','3 SMA'=>'3 SMA'],null,['class'=>'form-control select2','style'=>'width: 100%;', 'placeholder' => 'Pilih Kelas','required']) !!}  
+        {!! Form::select('kelas', ['7 SMP'=>'7 SMP','8 SMP'=>'8 SMP','9 SMP'=>'9 SMP','10 SMA'=>'10 SMA','11 SMA'=>'11 SMA','12 SMA'=>'12 SMA'],null,['class'=>'form-control select2','style'=>'width: 100%;', 'placeholder' => 'Pilih Kelas','required']) !!}  
       </div>
         
       <div class="form-group{{ $errors->has('golongan_darah') ? ' has-error' : '' }} has-feedback">

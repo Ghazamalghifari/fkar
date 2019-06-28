@@ -7,7 +7,7 @@
     </h1>
     <ol class="breadcrumb">
       <li><a href="{{ url('/home') }}"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-      <li><a href="{{ url('/admin/data-sekolah') }}"></i> Data Sekolah</a></li>
+      <li><a href="{{ url('/master-data/data-sekolah') }}"></i> Data Sekolah</a></li>
       <li class="active">Ubah Sekolah</li>
     </ol>
 </section>

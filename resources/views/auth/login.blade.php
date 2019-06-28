@@ -33,18 +33,18 @@
   <!-- Google Font -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
-<body class="hold-transition login-page"> 
+<body background="{{ asset('images/login-bg.jpg') }}"  > 
+
 <div class="login-box">
-  <div class="login-logo">
-    
-  <div class="row">
-        <div class="col-xs-3">
-          <img src="{{ asset('images/fkar.png') }}" height="125" width="100">
-        </div>
-        <div class="col-xs-9" style=" padding-top: 15px;">
-          <a><b>ROHIS <br></b></a><a style="font-size: 30px">BANDAR LAMPUNG</a> 
-        </div>
-  </div>
+  <div class="login-logo"> 
+    <div class="row">
+          <div class="col-xs-3">
+            <img src="{{ asset('images/fkar.png') }}" height="125" width="100">
+          </div>
+          <div class="col-xs-9" style=" padding-top: 2px;">
+            <a><b style="font-size: 50px;color:white;">ROHIS <br></b></a><b style="font-size: 28px;color:white;">BANDAR LAMPUNG</b> 
+          </div>
+    </div>
   </div>
   <!-- /.login-logo -->
   <div class="login-box-body">
@@ -52,11 +52,11 @@
     <form class="form-horizontal" role="form" method="POST" action="{{ url('/login') }}">
                         {{ csrf_field() }}
       <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }} has-feedback">
-        <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required autofocus>
+        <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required autofocus placeholder="Email">
         <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
       </div>
       <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }} has-feedback">
-        <input id="password" type="password" class="form-control" name="password" required>
+        <input id="password" type="password" class="form-control" name="password" required placeholder="Password atau Id Rohis">
         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
       </div>
       <div class="row">

@@ -7,6 +7,7 @@
     <h1>  Dashboard </h1> 
   </section>
     
+@if (session()->has('flash_notification.message'))  
 <section class="content">  
   <div class="row"> 
     <div class="col-xs-12">
@@ -14,6 +15,7 @@
     </div>
   </div>
 </section>
+@endif
 
 <!-- /.content --> 
 @role('admin')  

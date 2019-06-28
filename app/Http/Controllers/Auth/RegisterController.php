@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Session;
+use Mail;
 
 class RegisterController extends Controller
 {
@@ -86,8 +87,9 @@ class RegisterController extends Controller
             'status' => $status,
             'password' => bcrypt($password),
         ]);
-        
-        $passwordnew = 2019 + $user->id; 
+      
+        $tahun = date('Y');
+        $passwordnew = "$tahun$user->id"; 
         $data_user = User::where('id',$user->id)->first();   
         $data_user->password  = bcrypt($passwordnew);
         $data_user->save();  
@@ -95,6 +97,7 @@ class RegisterController extends Controller
         $memberRole = Role::where('name', 'member')->first();
         $user->attachRole($memberRole);
         
+
         Session::flash("flash_notification", [
             "level"=>"success",
             "message"=>"Berhasil Daftar <br> ID ROHIS : #$passwordnew"

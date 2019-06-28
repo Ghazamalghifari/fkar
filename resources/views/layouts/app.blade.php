@@ -147,6 +147,17 @@
 
     </div>
 
+    
+
+<style>
+.dataTables_filter {
+  float: right !important
+}
+.dataTables_paginate.paging_simple_numbers {
+  float: right !important
+}
+</style>
+
     <!-- Scripts -->
      <!-- Scripts -->
 <script src="{{ asset('bower_components/jquery/dist/jquery.min.js') }}"></script>

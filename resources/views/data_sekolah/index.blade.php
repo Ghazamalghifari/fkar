@@ -37,7 +37,6 @@
 </section>
 <!-- /.content -->
 @endsection
-
 @section('scripts')
 {!! $html->scripts() !!}
 
