@@ -7,6 +7,7 @@ use App\Role;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Session;
 
 class RegisterController extends Controller
 {
@@ -54,11 +55,10 @@ class RegisterController extends Controller
             'alamat' => 'required',
             'id_sekolah' => 'required',
             'kelas' => 'required',
-            'golongan_darah' => 'required', 
+            'golongan_darah' => 'required',  
             'no_wa' => 'required',
             'email' => 'required|email|max:255|unique:users'
-        ]);
-         
+        ]); 
     }
 
     /**
@@ -69,8 +69,7 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        $password = '2019';
-        $kategori_daftar = 'Baru';
+        $password = '2019'; 
         $status = 'anggotarohis';
         
         $user = User::create([
@@ -80,16 +79,26 @@ class RegisterController extends Controller
             'id_sekolah' => $data['id_sekolah'],
             'kelas' => $data['kelas'],
             'golongan_darah' => $data['golongan_darah'],
-            'kategori_daftar' => $kategori_daftar,
+            'kategori_daftar' => $data['kategori_daftar'],
             'jenis_kelamin' => $data['jenis_kelamin'], 
             'no_wa' => $data['no_wa'], 
             'email' => $data['email'], 
             'status' => $status,
             'password' => bcrypt($password),
         ]);
-          
+        
+        $passwordnew = 2019 + $user->id; 
+        $data_user = User::where('id',$user->id)->first();   
+        $data_user->password  = bcrypt($passwordnew);
+        $data_user->save();  
+
         $memberRole = Role::where('name', 'member')->first();
         $user->attachRole($memberRole);
+        
+        Session::flash("flash_notification", [
+            "level"=>"success",
+            "message"=>"Berhasil Daftar <br> ID ROHIS : #$passwordnew"
+            ]);
         return $user; 
     }
 }

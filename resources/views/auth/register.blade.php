@@ -71,19 +71,23 @@
       </div>
       
       <div class="form-group{{ $errors->has('id_sekolah') ? ' has-error' : '' }} has-feedback">
-    {!! Form::select('id_sekolah', []+App\DataSekolah::pluck('nama_sekolah','id')->all(), null,['class'=>'form-control select2','style'=>'width: 100%;', 'placeholder' => 'Pilih Sekolah']) !!}      
+    {!! Form::select('id_sekolah', []+App\DataSekolah::pluck('nama_sekolah','id')->all(), null,['class'=>'form-control select2','style'=>'width: 100%;', 'placeholder' => 'Pilih Sekolah','required']) !!}      
       </div> 
               
       <div class="form-group{{ $errors->has('kelas') ? ' has-error' : '' }} has-feedback">
-        {!! Form::select('kelas', ['1 SMA'=>'1 SMA','2 SMA'=>'2 SMA','3 SMA'=>'3 SMA'],null,['class'=>'form-control select2','style'=>'width: 100%;', 'placeholder' => 'Pilih Kelas']) !!}  
+        {!! Form::select('kelas', ['1 SMA'=>'1 SMA','2 SMA'=>'2 SMA','3 SMA'=>'3 SMA'],null,['class'=>'form-control select2','style'=>'width: 100%;', 'placeholder' => 'Pilih Kelas','required']) !!}  
       </div>
         
       <div class="form-group{{ $errors->has('golongan_darah') ? ' has-error' : '' }} has-feedback">
-        {!! Form::select('golongan_darah', ['O'=>'O','A'=>'A','B'=>'B','AB'=>'AB'],null,['class'=>'form-control select2','style'=>'width: 100%;', 'placeholder' => 'Pilih Golongan Darah']) !!}  
+        {!! Form::select('golongan_darah', ['O'=>'O','A'=>'A','B'=>'B','AB'=>'AB'],null,['class'=>'form-control select2','style'=>'width: 100%;', 'placeholder' => 'Pilih Golongan Darah','required']) !!}  
       </div>
 
       <div class="form-group{{ $errors->has('jenis_kelamin') ? ' has-error' : '' }} has-feedback">
         {!! Form::select('jenis_kelamin', ['Laki-Laki'=>'Laki-Laki','Perempuan'=>'Perempuan'],null,['class'=>'form-control select2','style'=>'width: 100%;', 'placeholder' => 'Pilih Jenis Kelamin']) !!}  
+      </div>
+
+      <div class="form-group{{ $errors->has('kategori_daftar') ? ' has-error' : '' }} has-feedback">
+        {!! Form::select('kategori_daftar', ['Anggota Baru'=>'Anggota Baru','Anggota Lama'=>'Anggota Lama'],null,['class'=>'form-control select2','style'=>'width: 100%;', 'placeholder' => 'Pilih Kategori Anggota']) !!}  
       </div>
 
       <div class="form-group{{ $errors->has('no_wa') ? ' has-error' : '' }} has-feedback">

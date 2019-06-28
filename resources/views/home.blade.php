@@ -7,8 +7,17 @@
     <h1>  Dashboard </h1> 
   </section>
     
-  @role('admin')  
-    <!-- Main content -->
+<section class="content">  
+  <div class="row"> 
+    <div class="col-xs-12">
+      @include('layouts._flash') 
+    </div>
+  </div>
+</section>
+
+<!-- /.content --> 
+@role('admin')  
+  <!-- Main content -->
     <section class="content">  
             <!-- ./col -->
             <div class="col-lg-6 col-xs-6">
@@ -41,6 +50,6 @@
               </div>
             </div> 
     </section>
-    <!-- /.content -->
-  @endrole
+   <!-- /.content -->
+@endrole
 @endsection

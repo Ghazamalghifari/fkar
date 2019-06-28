@@ -35,7 +35,9 @@
           <div class="box"> 
             <!-- /.box-header -->
             <div class="box-body">  
+ 	<div class="table-responsive">
                 {!! $html->table(['class'=>'table table-bordered table-hover']) !!}
+</div>
             </div>
             <!-- /.box-body -->
           </div>

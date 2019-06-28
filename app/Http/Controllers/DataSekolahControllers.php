@@ -30,7 +30,7 @@ class DataSekolahControllers extends Controller
                 })->make(true);
         }
         $html = $htmlBuilder
-         ->addColumn(['data' => 'nama_sekolah', 'name' => 'nama_sekolah', 'title' => 'Angkatan'])
+         ->addColumn(['data' => 'nama_sekolah', 'name' => 'nama_sekolah', 'title' => 'Nama Sekolah'])
          ->addColumn(['data' => 'action', 'name'=>'action','title'=>'', 'orderable'=>false, 'searchable'=>false]);
          return view('data_sekolah.index')->with(compact('html'));   
      }
