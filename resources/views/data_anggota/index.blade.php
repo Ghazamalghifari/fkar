@@ -17,7 +17,10 @@
 <!-- /.row -->
 <div class="row"> 
         <div class="col-xs-12">
-    <a class="btn btn-block btn-info btn-flat" href="{{ route('data-sekolah.create') }}"><i class="fa fa-plus"></i> Tambah</a>
+@include('layouts._flash') 
+          </div>
+        <div class="col-xs-12">
+    <a class="btn btn-block btn-info btn-flat" href="{{ route('data-anggota.create') }}"><i class="fa fa-plus"></i> Tambah</a>
           <div class="box"> 
             <!-- /.box-header -->
             <div class="box-body">  

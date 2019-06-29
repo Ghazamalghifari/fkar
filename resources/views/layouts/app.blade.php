@@ -27,6 +27,8 @@
 
 <link href="{{ asset('css/selectize.bootstrap3.css') }}" rel="stylesheet">
 <link href="{{ asset('css/bootstrap-datepicker.min.css') }}" rel="stylesheet">
+  <link rel="stylesheet" href="{{ asset('bower_components/select2/dist/css/select2.min.css') }}    ">
+  <link rel="stylesheet" href="{{ asset('plugins/iCheck/square/blue.css') }}    "> 
 
     <!-- Scripts -->
     <script>
@@ -196,6 +198,8 @@
 <!-- DataTables -->
 <script src="{{ asset('bower_components/datatables.net/js/jquery.dataTables.min.js') }}"></script>
 <script src="{{ asset('bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js') }}"></script> 
+<script src="{{ asset('bower_components/select2/dist/js/select2.full.min.js') }}"></script>
+<script src="{{ asset('bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js') }}"></script>
 
 @yield('scripts')
 <script>
