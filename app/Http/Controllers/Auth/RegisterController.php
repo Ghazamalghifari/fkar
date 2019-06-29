@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\User;
 use App\Role;
+use App\DataSekolah;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -92,11 +93,20 @@ class RegisterController extends Controller
         $passwordnew = "$tahun$user->id"; 
         $data_user = User::where('id',$user->id)->first();   
         $data_user->password  = bcrypt($passwordnew);
+        $data_user->id_rohis  = $passwordnew;
         $data_user->save();  
 
         $memberRole = Role::where('name', 'member')->first();
         $user->attachRole($memberRole);
+        $sekolah = DataSekolah::where('id',$data['id_sekolah'])->first();
         
+        
+        Mail::send('email', ['data' => $data,'idrohis'=>$passwordnew,'sekolah'=>$sekolah->nama_sekolah], function ($message) use ($data)
+        { 
+            $message->subject('Selamat Anda telah terdaftar sebagai Angota Rohis');
+            $message->from('ghazamuhammadalghifari@gmail.com', 'Ghaza');
+            $message->to($data['email'], '');
+        });
 
         Session::flash("flash_notification", [
             "level"=>"success",

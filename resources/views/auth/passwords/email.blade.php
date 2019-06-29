@@ -33,20 +33,19 @@
   <!-- Google Font -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
-<body class="hold-transition login-page"> 
+<body background="{{ asset('images/login-bg.jpg') }}"  > 
 
 <div class="login-box">
-  <div class="login-logo">
-    
-  <div class="row">
-        <div class="col-xs-3">
-          <img src="{{ asset('images/fkar.png') }}" height="125" width="100">
-        </div>
-        <div class="col-xs-9" style=" padding-top: 15px;">
-          <a><b>ROHIS <br></b></a><a style="font-size: 30px">BANDAR LAMPUNG</a> 
-        </div>
+  <div class="login-logo"> 
+    <div class="row">
+          <div class="col-xs-3">
+            <img src="{{ asset('images/fkar.png') }}" height="125" width="100">
+          </div>
+          <div class="col-xs-9" style=" padding-top: 2px;">
+            <a><b style="font-size: 50px;color:white;">ROHIS <br></b></a><b style="font-size: 28px;color:white;">BANDAR LAMPUNG</b> 
+          </div>
+    </div>
   </div>
-  </div> 
   @if (session('status'))
   <div class="alert alert-success">
     {{ session('status') }}

@@ -62,11 +62,23 @@
             <img src="{{ asset('images/icon.png') }}" class="user-image" alt="User Image">
             <span class="hidden-xs"> {{ Auth::user()->name }}</span>
           </a>
-          <ul class="dropdown-menu"> 
+          <ul class="dropdown-menu">  <!-- User image -->
+              <li class="user-header">
+                <img src="{{ asset('images/icon.png') }}" class="img-circle" alt="User Image">
+
+                <p>
+                {{ Auth::user()->name }}
+                @role('member')  
+                  <small>ID ROHIS : {{ Auth::user()->id_rohis }}</small>
+                @endrole 
+                </p>
+              </li>
             <!-- Menu Footer-->
             <li class="user-footer">
-              <div class="pull-right">
+              <div class="pull-left">
                 <a href="#" class="btn btn-default btn-flat">Profile</a> 
+              </div>
+                <div class="pull-right">
                 <a href="{{ url('/logout') }}" class="btn btn-default btn-flat" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a> 
 
                                         <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">

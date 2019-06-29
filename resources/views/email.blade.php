@@ -43,8 +43,8 @@ $style = [
     /* Type ------------------------------ */
 
     'anchor' => 'color: #3869D4;',
-    'header-1' => 'margin-top: 0; color: #2F3133; font-size: 19px; font-weight: bold; text-align: left;',
-    'paragraph' => 'margin-top: 0; color: #74787E; font-size: 16px; line-height: 1.5em;',
+    'header-1' => '',
+    'paragraph' => 'margin-top: 0; color: #74787E; font-size: 15px; ',
     'paragraph-sub' => 'margin-top: 0; color: #74787E; font-size: 12px; line-height: 1.5em;',
     'paragraph-center' => 'text-align: center;',
 
@@ -65,7 +65,7 @@ $style = [
 <body style="{{ $style['body'] }}">
     <table width="100%" cellpadding="0" cellspacing="0">
         <tr>
-            <td style="{{ $style['email-wrapper'] }}" align="center">
+            <td style="{{ $style['email-wrapper'] }}">
                 <table width="100%" cellpadding="0" cellspacing="0">
                     <!-- Logo -->
                     <tr>
@@ -78,18 +78,30 @@ $style = [
 
                     <!-- Email Body -->
                     <tr>
-                        <td style="{{ $style['email-body'] }}" width="100%">
-                            <table style="{{ $style['email-body_inner'] }}" align="center" width="570" cellpadding="0" cellspacing="0">
+                        <td style="{{ $style['email-body'] }}">
+                            <table style="{{ $style['email-body_inner'] }}" width="1000" cellpadding="0" cellspacing="0">
                                 <tr>
                                     <td style="{{ $fontFamily }} {{ $style['email-body_cell'] }}">
                                         <!-- Greeting -->
-                                        <h1 style="{{ $style['header-1'] }}"> 
+                                        <h1 style="margin-top: 0; color: #2F3133; font-size: 19px; font-weight: bold; text-align: left;text-align: center;"> 
                                                     Assalamualaikum. 
                                         </h1>
 
                                         <!-- Intro --> 
                                             <p style="{{ $style['paragraph'] }}">
-                                            Selamat Anda telah mendaftar sebagai Angota Rohis, ini adalah data Anda :
+                                            Selamat Anda telah terdaftar sebagai Angota Rohis,ini adalah data Anda : <br> <br>
+
+                                            ID ROHIS : {{ $idrohis }} <br> (ID Rohis Bisa digunakan sebagai password ketika login)<br>
+                                            Nama : {{ $data['name'] }} <br>
+                                            Email : {{ $data['email'] }}<br>
+                                            Tanggal Lahir : {{ $data['tanggal_lahir'] }}<br>
+                                            Sekolah : {{ $sekolah }}<br>
+                                            Kelas : {{ $data['kelas'] }}<br>
+                                            Golongan Darah : {{ $data['golongan_darah'] }}<br>
+                                            Jenis Kelamin : {{ $data['jenis_kelamin'] }}<br>
+                                            Kategori Anggota : {{ $data['kategori_daftar'] }}<br>
+                                            Nomor Handphone : {{ $data['no_wa'] }}<br>
+                                            Alamat : {{ $data['alamat'] }}<br>
                                             </p> 
   
 
@@ -107,7 +119,7 @@ $style = [
                     <!-- Footer -->
                     <tr>
                         <td>
-                            <table style="{{ $style['email-footer'] }}" align="center" width="570" cellpadding="0" cellspacing="0">
+                            <table style="{{ $style['email-footer'] }}" width="570" cellpadding="0" cellspacing="0">
                                 <tr>
                                     <td style="{{ $fontFamily }} {{ $style['email-footer_cell'] }}">
                                         <p style="{{ $style['paragraph-sub'] }}">
