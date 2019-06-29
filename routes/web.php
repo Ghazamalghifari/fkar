@@ -19,13 +19,15 @@ Route::get('/', function () {
 Route::get('/email', function () {
     return view('email');
 });
+
 Route::post('/sendEmail', 'Email@sendEmail');
 
 Auth::routes();
 
 Route::group(['middleware' => 'auth'], function(){
 	Route::get('/home', 'HomeController@index');
-	Route::resource('data-anggota', 'DataAnggotaControllers'); 
+	Route::get('/profil', 'HomeController@profil');
+	Route::resource('data-anggota', 'DataAnggotaControllers');  
 });
 Route::get('/jumlah-sekolah', 'HomeController@jumlah_sekolah');
 	Route::group(['prefix'=>'master-data','middleware'=>['auth', 'role:admin']], function () {
