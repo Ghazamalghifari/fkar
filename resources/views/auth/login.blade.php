@@ -42,7 +42,7 @@
             <img src="{{ asset('images/fkar.png') }}" height="125" width="100">
           </div>
           <div class="col-xs-9" style=" padding-top: 2px;">
-            <a><b style="font-size: 50px;color:white;">ROHIS <br></b></a><b style="font-size: 28px;color:white;">BANDAR LAMPUNG</b> 
+            <a><b style="font-size: 50px;color:white;">ROHIS <br></b></a><b style="font-size: 25px;color:white;">BANDAR LAMPUNG</b> 
           </div>
     </div>
   </div>

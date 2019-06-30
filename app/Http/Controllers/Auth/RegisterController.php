@@ -104,7 +104,7 @@ class RegisterController extends Controller
         Mail::send('email', ['data' => $data,'idrohis'=>$passwordnew,'sekolah'=>$sekolah->nama_sekolah], function ($message) use ($data)
         { 
             $message->subject('Selamat Anda telah terdaftar sebagai Angota Rohis');
-            $message->from('ghazamuhammadalghifari@gmail.com', 'Ghaza');
+            $message->from('info@fkar.org', 'FKAR Bandar Lampung');
             $message->to($data['email'], '');
         });
 

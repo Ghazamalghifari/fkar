@@ -111,6 +111,15 @@ class DataSekolahControllers extends Controller
     public function destroy($id)
     {
         // 
+        $user = User::where('id_sekolah',$id);
+        if ($user->count == '0'){ 
+            Session::flash("flash_notification", [
+                "level"=>"success",
+                "message"=>"Sekolah Tidak Bisa di hapus"
+                ]);
+            return redirect()->back();
+
+        }
         DataSekolah::destroy($id);
         Session::flash("flash_notification", [
             "level"=>"success",

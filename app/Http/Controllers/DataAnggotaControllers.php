@@ -29,7 +29,7 @@ class DataAnggotaControllers extends Controller
                  })->make(true);
          }
          $html = $htmlBuilder
-          ->addColumn(['data' => 'id_rohis', 'name' => 'id_rohis', 'title' => 'Id'])
+          ->addColumn(['data' => 'id_rohis', 'name' => 'id_rohis', 'title' => 'Id Rohis'])
           ->addColumn(['data' => 'name', 'name' => 'name', 'title' => 'Nama'])
           ->addColumn(['data' => 'data_sekolah.nama_sekolah', 'name' => 'data_sekolah.nama_sekolah', 'title' => 'Sekolah'])
           ->addColumn(['data' => 'kelas', 'name' => 'kelas', 'title' => 'Kelas'])

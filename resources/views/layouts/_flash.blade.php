@@ -1,6 +1,4 @@
-
-  @if (session()->has('flash_notification.message'))  
-
+@if (session()->has('flash_notification.message'))   
 <div class="box box-{{ session()->get('flash_notification.level') }} box-solid">
             <div class="box-header with-border">
               <h3 class="box-title">Pemberitahuan!</h3>
