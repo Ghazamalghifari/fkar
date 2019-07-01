@@ -19,8 +19,9 @@
         <div class="col-xs-12">
 @include('layouts._flash') 
           </div>
-        <div class="col-xs-12">
-    <a class="btn btn-block btn-info btn-flat" href="{{ route('data-anggota.create') }}"><i class="fa fa-plus"></i> Tambah</a>
+        <div class="col-xs-12"> 
+    <a class="btn btn-info btn-flat" href="{{ route('data-anggota.create') }}"><i class="fa fa-plus"></i> Tambah</a>
+    <a class="btn btn-success btn-flat" href="{{ url('downloadExcel/xls') }}"><i class="fa fa-download"></i> Download Excel</a>
           <div class="box"> 
             <!-- /.box-header -->
             <div class="box-body">  

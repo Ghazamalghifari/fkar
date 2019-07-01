@@ -21,7 +21,7 @@ Route::get('/email', function () {
 });
 
 Route::post('/sendEmail', 'Email@sendEmail');
-
+Route::get('downloadExcel/{type}', 'DataAnggotaControllers@downloadExcel');
 Auth::routes();
 
 Route::group(['middleware' => 'auth'], function(){

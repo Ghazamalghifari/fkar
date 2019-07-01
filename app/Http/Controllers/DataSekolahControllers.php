@@ -7,6 +7,7 @@ use App\DataSekolah;
 use Yajra\Datatables\Html\Builder;
 use Yajra\Datatables\Datatables;
 use Session;
+use App\User;
 
 class DataSekolahControllers extends Controller
 {
@@ -111,8 +112,15 @@ class DataSekolahControllers extends Controller
     public function destroy($id)
     {
         // 
-        $user = User::where('id_sekolah',$id);
-        if ($user->count == '0'){ 
+        $user = User::where('id_sekolah',$id)->count(); 
+        if ($user > 0 ){ 
+            DataSekolah::destroy($id);
+            Session::flash("flash_notification", [
+                "level"=>"success",
+                "message"=>"Sekolah Berhasil Di Hapus"
+                ]);
+            return redirect()->route('data-sekolah.index');
+        }elseif($user == 0){
             Session::flash("flash_notification", [
                 "level"=>"success",
                 "message"=>"Sekolah Tidak Bisa di hapus"
@@ -120,11 +128,6 @@ class DataSekolahControllers extends Controller
             return redirect()->back();
 
         }
-        DataSekolah::destroy($id);
-        Session::flash("flash_notification", [
-            "level"=>"success",
-            "message"=>"Sekolah Berhasil Di Hapus"
-            ]);
-        return redirect()->route('data-sekolah.index');
+
     }
 }

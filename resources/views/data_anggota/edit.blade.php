@@ -26,3 +26,26 @@
 </section>
 <!-- /.content -->
 @endsection
+
+@section('scripts')
+<script>
+  $(function () {
+    $('input').iCheck({
+      checkboxClass: 'icheckbox_square-blue',
+      radioClass: 'iradio_square-blue',
+      increaseArea: '20%' /* optional */
+    });
+  });
+  $(function () {
+    //Initialize Select2 Elements
+    $('.select2').select2()
+
+    //Date picker
+    $('#datepicker').datepicker({
+      autoclose: true
+    })
+    $( "#datepicker" ).datepicker( "option", "showAnim", 'slideDown');
+  })
+</script> 
+
+@endsection
