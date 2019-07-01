@@ -42,7 +42,7 @@
               <div class="active tab-pane" id="activity">
                 <!-- Post --> 
  
-                {!! Form::model($dataanggota, ['url' => route('data-anggota.update', $dataanggota->id), 'method' => 'put', 'files'=>'true', 'class'=>'form-horizontal']) !!}
+                {!! Form::model($datauser, ['url' => route('profil.update_profil', $datauser->id), 'method' => 'get', 'files'=>'true', 'class'=>'form-horizontal']) !!}
                 
                 <!-- /.box -->   
 <div class="box-body">

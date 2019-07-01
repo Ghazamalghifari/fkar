@@ -28,6 +28,11 @@ Route::group(['middleware' => 'auth'], function(){
 	Route::get('/home', 'HomeController@index');
 	Route::get('/profil', 'HomeController@profil');
 	Route::resource('data-anggota', 'DataAnggotaControllers');  
+	Route::get('profil-update/{id}',[
+		'middleware' => ['auth'],
+		'as' => 'profil.update_profil',
+		'uses' => 'HomeController@update_profil'
+		]);
 });
 Route::get('/jumlah-sekolah', 'HomeController@jumlah_sekolah');
 	Route::group(['prefix'=>'master-data','middleware'=>['auth', 'role:admin']], function () {

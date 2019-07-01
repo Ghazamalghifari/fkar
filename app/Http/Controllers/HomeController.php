@@ -36,10 +36,22 @@ class HomeController extends Controller
 
     public function profil()
     {
-        $dataanggota = User::find(Auth::user()->id);
-        return view('layouts.profil')->with(compact('dataanggota'));
+        $datauser = User::find(Auth::user()->id);
+        return view('layouts.profil')->with(compact('datauser'));
     }
     
+    public function update_profil(Request $request, $id)
+    { 
+       $user = User::find($id);
+       if(!$user->update($request->all())) return redirect()->back();
+       
+        Session::flash("flash_notification", [
+            "level"=>"success",
+            "message"=>"Berhasil Mengubah Anggota"
+            ]);
+        return redirect()->back();
+    }
+
     public function jumlah_sekolah(Request $request, Builder $htmlBuilder)
     {
         if ($request->ajax()) {
