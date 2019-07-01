@@ -72,7 +72,7 @@
       
       <div class="form-group{{ $errors->has('id_sekolah') ? ' has-error' : '' }} has-feedback">
     {!! Form::select('id_sekolah', []+App\DataSekolah::pluck('nama_sekolah','id')->all(), null,['class'=>'form-control select2','style'=>'width: 100%;', 'placeholder' => 'Pilih Sekolah','required']) !!}      
-      </div> <p style="color:red;font-size:12px">Apabila sekolah belum terdaftar,Kirim Masukan <a href="mailto:info@fkar.org@gmail.com?Subject=Tolong%20masukan%20sekolah%20saya%20=%20(nama%20sekolah%20anda)%20" target="_top">Klik DiSini</a></p>
+      </div> <p style="color:red;font-size:12px">Apabila sekolah belum terdaftar,Kirim Masukan <a href="mailto:info@fkar.org?Subject=Tolong%20masukan%20sekolah%20saya%20=%20(nama%20sekolah%20anda)%20" target="_top">Klik DiSini</a></p>
               
       <div class="form-group{{ $errors->has('kelas') ? ' has-error' : '' }} has-feedback">
         {!! Form::select('kelas', ['7 SMP'=>'7 SMP','8 SMP'=>'8 SMP','9 SMP'=>'9 SMP','10 SMA'=>'10 SMA','11 SMA'=>'11 SMA','12 SMA'=>'12 SMA'],null,['class'=>'form-control select2','style'=>'width: 100%;', 'placeholder' => 'Pilih Kelas','required']) !!}  
