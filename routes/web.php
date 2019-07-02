@@ -33,7 +33,13 @@ Route::group(['middleware' => 'auth'], function(){
 		'as' => 'profil.update_profil',
 		'uses' => 'HomeController@update_profil'
 		]);
+	Route::get('profil-reset/{id}',[
+		'middleware' => ['auth'],
+		'as' => 'profil.reset_profil',
+		'uses' => 'HomeController@reset_profil'
+	]);
 });
+ 
 Route::get('/jumlah-sekolah', 'HomeController@jumlah_sekolah');
 	Route::group(['prefix'=>'master-data','middleware'=>['auth', 'role:admin']], function () {
 		Route::resource('data-sekolah','DataSekolahControllers'); 

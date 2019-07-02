@@ -47,10 +47,23 @@ class HomeController extends Controller
        
         Session::flash("flash_notification", [
             "level"=>"success",
-            "message"=>"Berhasil Mengubah Anggota"
+            "message"=>"Berhasil Mengubah Profil"
             ]);
         return redirect()->back();
     }
+
+    public function reset_profil(Request $request, $id)
+    { 
+       $user = User::find($id);
+       
+       
+        Session::flash("flash_notification", [
+            "level"=>"success",
+            "message"=>"Silahkan Cek Email anda untuk melihat Password Anda"
+            ]);
+        return redirect()->back();
+    }
+
 
     public function jumlah_sekolah(Request $request, Builder $htmlBuilder)
     {

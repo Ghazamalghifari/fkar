@@ -89,7 +89,7 @@ class DataAnggotaControllers extends Controller
          Mail::send('email', ['data' => $request,'idrohis'=>$passwordnew,'sekolah'=>$sekolah->nama_sekolah], function ($message) use ($request)
          { 
              $message->subject('Selamat Anda telah terdaftar sebagai Angota Rohis');
-             $message->from('ghazamuhammadalghifari@gmail.com', 'Ghaza');
+             $message->from('info@fkar.org', 'FKAR Bandar Lampung');
              $message->to($request['email'], '');
          });
           

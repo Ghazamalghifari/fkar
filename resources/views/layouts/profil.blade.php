@@ -26,7 +26,7 @@
               <h3 class="profile-username text-center">{{ Auth::user()->name }}</h3>
 
               @role('member')  
-              <p class="text-muted text-center">ID ROHIS : {{ Auth::user()->id_rohis }}</p>
+              <p class="text-muted text-center">ID ROHIS : {{ Auth::user()->id_rohis }} <br><a style="color:red;font-size:11px">(ID ROHIS bisa digunakan sebagai password login)</a> </p>
                 @endrole   
             </div>
             <!-- /.box-body -->

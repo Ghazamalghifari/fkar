@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>{{ config('app.name', 'Laravel') }}</title>
-    <link rel="shortcut icon" href="{{ asset('images/fkar.png') }}">
+    <link rel="shortcut icon" href="{{ asset('images/fkar.PNG') }}">
     <meta name="csrf-token" content="{{ csrf_token() }}">
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
@@ -39,7 +39,7 @@
   <div class="login-logo"> 
     <div class="row">
           <div class="col-xs-3">
-            <img src="{{ asset('images/fkar.png') }}" height="125" width="100">
+            <img src="{{ asset('images/fkar.PNG') }}" height="125" width="100">
           </div>
           <div class="col-xs-9" style=" padding-top: 2px;">
             <a><b style="font-size: 50px;color:white;">ROHIS <br></b></a><b style="font-size: 25px;color:white;">BANDAR LAMPUNG</b> 
