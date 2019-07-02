@@ -113,14 +113,14 @@ class DataSekolahControllers extends Controller
     {
         // 
         $user = User::where('id_sekolah',$id)->count(); 
-        if ($user > 0 ){ 
+        if ($user == 0 ){ 
             DataSekolah::destroy($id);
             Session::flash("flash_notification", [
                 "level"=>"success",
                 "message"=>"Sekolah Berhasil Di Hapus"
                 ]);
             return redirect()->route('data-sekolah.index');
-        }elseif($user == 0){
+        }else{
             Session::flash("flash_notification", [
                 "level"=>"success",
                 "message"=>"Sekolah Tidak Bisa di hapus"

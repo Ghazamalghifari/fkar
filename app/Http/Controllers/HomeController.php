@@ -30,7 +30,7 @@ class HomeController extends Controller
     public function index()
     {
         $datasekolah = DataSekolah::count();
-        $jumlahanggota = User::count();
+        $jumlahanggota = User::where('status','anggotarohis')->count();
         return view('home', ['datasekolah' => $datasekolah,'jumlahanggota' => $jumlahanggota]);
     }
 

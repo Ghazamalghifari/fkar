@@ -10,8 +10,7 @@ use Mail;
 use Yajra\Datatables\Html\Builder;
 use Yajra\Datatables\Datatables; 
 use App\Role;
-use Excel;
-
+use Excel;  
 class DataAnggotaControllers extends Controller
 {
     //
@@ -27,20 +26,12 @@ class DataAnggotaControllers extends Controller
                          'edit_url' => route('data-anggota.edit', $data_anggotas->id),
                          'confirm_message' => 'Yakin Mau Mengapus Anggota Rohis,dengan ID ROHIS : ' . $data_anggotas->id_rohis . '?'
                          ]);
-                 })->addColumn('sekolah',function($user){
-                    $status_sekolah = "sekolah";
-                    if ($user->id_sekolah ==  $user->id_sekolah) { 
-                        $sekolah = $user->id_sekolah;
-                    }else{
-                        $sekolah = $user->id_sekolah;
-                    }
-                    return $sekolah;
-                })->make(true);
+                 })->make(true);
          }
          $html = $htmlBuilder
           ->addColumn(['data' => 'id_rohis', 'name' => 'id_rohis', 'title' => 'Id Rohis'])
           ->addColumn(['data' => 'name', 'name' => 'name', 'title' => 'Nama'])
-          ->addColumn(['data' => 'sekolah', 'name' => 'sekolah', 'title' => 'Sekolah'])
+          ->addColumn(['data' => 'data_sekolah.nama_sekolah', 'name' => 'data_sekolah.nama_sekolah', 'title' => 'Sekolah'])
           ->addColumn(['data' => 'kelas', 'name' => 'kelas', 'title' => 'Kelas'])
           ->addColumn(['data' => 'no_wa', 'name' => 'no_wa', 'title' => 'Nomor Handphone'])
           ->addColumn(['data' => 'action', 'name'=>'action','title'=>'', 'orderable'=>false, 'searchable'=>false]);
@@ -121,11 +112,17 @@ class DataAnggotaControllers extends Controller
 
      public function downloadExcel(Request $request, $type)
      {
-         $data = User::get()->toArray();
-         return Excel::create('data_anggota', function($excel) use ($data) {
-             $excel->sheet('mySheet', function($sheet) use ($data)
+         $data = User::with('data_sekolah')->where('status','anggotarohis')->get()->toArray();
+         $data_excel = [];
+         foreach ($data as $val ) {
+             $val['id_sekolah']=$val['data_sekolah']['nama_sekolah'];
+             array_push($data_excel,$val);
+         }
+         
+         return Excel::create('data_anggota', function($excel) use ($data_excel) {
+             $excel->sheet('mySheet', function($sheet) use ($data_excel)
              {
-                 $sheet->fromArray($data);
+                 $sheet->fromArray($data_excel);
              });
          })->download($type);
      }

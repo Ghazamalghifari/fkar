@@ -42,6 +42,7 @@
               <div class="active tab-pane" id="activity">
                 <!-- Post --> 
  
+                @role('member')  
                 {!! Form::model($datauser, ['url' => route('profil.update_profil', $datauser->id), 'method' => 'get', 'files'=>'true', 'class'=>'form-horizontal']) !!}
                 
                 <!-- /.box -->   
@@ -138,6 +139,8 @@
  
 
                 {!! Form::close() !!}  
+                
+                @endrole   
               </div>
             </div> 
               <!-- /.tab-pane -->
