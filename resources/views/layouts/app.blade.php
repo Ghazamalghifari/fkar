@@ -130,6 +130,9 @@
       <li class="tree">
         <a href="{{ url('data-anggota') }}"><i class="fa fa-dashboard"></i>Anggota Rohis</a> 
       </li> 
+      <li class="tree">
+        <a href="{{ route('event.index') }}"><i class="fa fa-calendar"></i>Event</a> 
+      </li> 
       <li class="treeview">
             <a href="#">
               <i class="fa fa-th"></i>
@@ -214,5 +217,14 @@
     })
   })
 </script>
+<script type="text/javascript">
+
+$('.date').datepicker({  
+
+   format: 'mm/dd/yyyy'
+
+ });  
+
+</script>  
 </body>
 </html>

@@ -27,7 +27,8 @@ Auth::routes();
 Route::group(['middleware' => 'auth'], function(){
 	Route::get('/home', 'HomeController@index');
 	Route::get('/profil', 'HomeController@profil');
-	Route::resource('data-anggota', 'DataAnggotaControllers');  
+	Route::resource('data-anggota', 'DataAnggotaControllers');    
+	Route::resource('event', 'EventControllers');  
 	Route::get('profil-update/{id}',[
 		'middleware' => ['auth'],
 		'as' => 'profil.update_profil',
