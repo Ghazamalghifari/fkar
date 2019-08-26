@@ -102,11 +102,7 @@
     </form> 
   </div>
   <!-- /.login-box-body --> 
-  @if($result == null)
-  <hr>
-<div class="login-box-body">   
-<h3 style="color:red;font-style: italic"><center><b>ID Rohis Tidak Di Temukan.</b></center></h3>
-</div>
+  @if($result == null)  
   @else
 
 <div class="login-box-body">   
