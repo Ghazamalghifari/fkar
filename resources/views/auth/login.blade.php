@@ -80,8 +80,47 @@
     <a href="{{ url('/register') }}" class="text-center">Daftar Sebagai Anggota Rohis.</a>
 
   </div>
+  <br> 
+
+  <div class="login-box-body">
+    <p class="login-box-msg">Cek <b>ID ROHIS </b>.</p>
+    <form class="form-horizontal" role="form" method="POST" action="{{ url('cek-rohis') }}">
+                    {{ csrf_field() }}
+      <div class="row">
+        <div class="col-xs-8"> 
+            <div class="form-group{{ $errors->has('id_rohis') ? ' has-error' : '' }} has-feedback">
+              <input id="id_rohis" type="text" class="form-control" name="id_rohis" required placeholder="Cek ID Rohis">
+              <span class="glyphicon glyphicon-user form-control-feedback"></span>
+            </div> 
+        </div>
+        <!-- /.col -->
+        <div class="col-xs-4">
+          <button type="submit" class="btn btn-primary btn-block btn-flat">Cek</button>
+        </div>
+        <!-- /.col -->
+      </div>
+    </form> 
+  </div>
+  <!-- /.login-box-body --> 
+  @if($result == null)
+  <hr>
+<div class="login-box-body">   
+<h3 style="color:red;font-style: italic"><center><b>ID Rohis Tidak Di Temukan.</b></center></h3>
+</div>
+  @else
+
+<div class="login-box-body">   
+<b>Data Anggota :</b>
+    <ul>  
+      <li> Nama : <b>{{ $result->name }}</b></li>  
+      <li> Kelas : <b>{{ $result->kelas }}</b></li>  
+      <li> Sekolah : <b>{{ $result->data_sekolah->nama_sekolah }}</b></li>  
+    </ul>      
   <!-- /.login-box-body -->
 </div>
+  @endif 
+<!-- /.login-box -->
+
 <!-- /.login-box -->
 
 <!-- jQuery 3 -->

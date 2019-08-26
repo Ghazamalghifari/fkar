@@ -126,6 +126,12 @@
         <a href="{{ url('home') }}"><i class="fa fa-dashboard"></i>Dashboard</a> 
       </li> 
 
+      @role('member')  
+      <li class="tree">
+        <a href="{{ route('event.history') }}"><i class="fa fa-calendar"></i>History Event</a> 
+      </li> 
+      @endrole
+
       @role('admin')  
       <li class="tree">
         <a href="{{ url('data-anggota') }}"><i class="fa fa-dashboard"></i>Anggota Rohis</a> 

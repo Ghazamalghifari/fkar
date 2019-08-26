@@ -47,6 +47,4 @@
   </div>     
 </section>
 <!-- /.content -->
-@endsection
-
-@script
+@endsection 

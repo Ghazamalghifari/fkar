@@ -8,4 +8,14 @@ class PesertaEvent extends Model
 {
     //
     protected $fillable = ['id','id_event','id_peserta'];
+    
+    public function Event()
+          {
+            return $this->hasOne('App\Event','id_event','id_event');
+          }   
+          
+    public function Peserta()
+    {
+      return $this->hasOne('App\User','id','id_peserta');
+    }   
 }

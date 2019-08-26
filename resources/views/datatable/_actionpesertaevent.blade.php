@@ -1,0 +1,1 @@
+<a href="{{ $id_event }}" class="btn btn-default"><i class="fa fa-user"></i> Lihat Peserta</a> 

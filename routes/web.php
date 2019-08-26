@@ -10,9 +10,11 @@
 | to using a Closure or controller method. Build something great!
 |
 */
+Route::post('/cek-rohis', 'CekRohisControllers@cek_rohis');	
 
 Route::get('/', function () {
-    return view('auth.login');
+	$result = null;
+    return view('auth.login')->with(compact('result'));
 });
 
 //email
@@ -26,9 +28,26 @@ Auth::routes();
 
 Route::group(['middleware' => 'auth'], function(){
 	Route::get('/home', 'HomeController@index');
-	Route::get('/profil', 'HomeController@profil');
+	Route::get('/profil', 'HomeController@profil');	
+	Route::get('ikut-event/{id}',[
+		'middleware' => ['auth'],
+		'as' => 'event.ikutevent',
+		'uses' => 'HomeController@ikut_event'
+	]); 
+
+	Route::get('history-event',[
+		'middleware' => ['auth'],
+		'as' => 'event.history',
+		'uses' => 'HomeController@history_event'
+	]);
+
 	Route::resource('data-anggota', 'DataAnggotaControllers');    
-	Route::resource('event', 'EventControllers');  
+	Route::get('peserta-event/{id}',[
+		'middleware' => ['auth'],
+		'as' => 'event.peserta',
+		'uses' => 'EventControllers@peserta_event'
+		]);
+
 	Route::get('profil-update/{id}',[
 		'middleware' => ['auth'],
 		'as' => 'profil.update_profil',
@@ -43,6 +62,7 @@ Route::group(['middleware' => 'auth'], function(){
  
 Route::get('/jumlah-sekolah', 'HomeController@jumlah_sekolah');
 	Route::group(['prefix'=>'master-data','middleware'=>['auth', 'role:admin']], function () {
+		Route::resource('event', 'EventControllers');  
 		Route::resource('data-sekolah','DataSekolahControllers'); 
 		Route::resource('data-users','UserControllers'); 
 		Route::get('filterotoritas/{id}',[

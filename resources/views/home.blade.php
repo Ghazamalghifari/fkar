@@ -1,21 +1,55 @@
 @extends('layouts.app')
-
 @section('content')
 
+<!-- Main content -->
+<section class="content"> 
+<!-- /.row -->
+<div class="row"> 
+        <div class="col-xs-12">
+@include('layouts._flash') 
+          </div>
+        <div class="col-xs-12">    
+          <div class="box"> 
+            <!-- /.box-header -->
+            <div class="box-body">  
+            @role('member')  
+  <!-- Main content -->
+    <section class="content">  
+             
   <!-- Content Header (Page header) -->
   <section class="content-header">
-    <h1>  Dashboard </h1> 
+    <h1>
+    Event 
+    </h1>
+    <ol class="breadcrumb">
+      <li><a href="{{ url('/home') }}"><i class="fa fa-dashboard"></i> Dashboard</a></li> 
+      <li class="active">Event</li>
+    </ol>
   </section>
-    
-@if (session()->has('flash_notification.message'))  
-<section class="content">  
-  <div class="row"> 
-    <div class="col-xs-12">
-      @include('layouts._flash') 
-    </div>
-  </div>
+  
+<!-- Main content -->
+<section class="content"> 
+<!-- /.row -->
+<div class="row">  
+        <div class="col-xs-12"> 
+          <div class="box"> 
+            <!-- /.box-header -->
+            <div class="box-body">  
+                {!! $html->table(['class'=>'table']) !!}
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+        </div>
+      </div>
+    </section>
+    <!-- /.content -->
+  </div> 
 </section>
-@endif
+<!-- /.content -->
+    </section>
+   <!-- /.content -->
+@endrole
 
 <!-- /.content --> 
 @role('admin')  
@@ -54,4 +88,26 @@
     </section>
    <!-- /.content -->
 @endrole
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+        </div>
+      </div>
+    </section>
+    <!-- /.content -->
+  </div> 
+</section>
+<!-- /.content -->
 @endsection
+@section('scripts')
+{!! $html->scripts() !!} 
+
+<script>
+$(document).ready(function() {
+  $("#btnEvt").click(function(){
+    console.log($(this).attr('data-id'))
+  })
+})
+</script>
+@endsection 
