@@ -25,6 +25,20 @@ class UserSeeder extends Seeder
 	    $memberRole->display_name = "Member";
 	    $memberRole->save();
 
+    	// Membuat role sohib
+	    $sohibRole = new Role();
+	    $sohibRole->name = "sohib";
+	    $sohibRole->display_name = "Sohib";
+		$sohibRole->save();
+		
+    	//Membuat Sample User Sohib
+        $sohib = new User();
+		$sohib->name = "Sample sohib";
+		$sohib->email = 'sohib@gmail.com';
+		$sohib->password = bcrypt('rahasia');
+		$sohib->save();
+		$sohib->attachRole($sohibRole);
+
     	//Membuat Sample User Member
         $member = new User();
 		$member->name = "Sample Member";

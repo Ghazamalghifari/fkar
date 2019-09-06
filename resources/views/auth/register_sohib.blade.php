@@ -51,51 +51,26 @@
   </div>
 
   <div class="register-box-body">
-    <p class="login-box-msg">Daftar Sebagai Anggota Rohis.</p>
+    <p class="login-box-msg">Daftar Sebagai Sohib/Mitra.</p>
 
-    <form class="form-horizontal" role="form" method="POST" action="{{ url('/register') }}">
+    <form class="form-horizontal" role="form" method="POST" action="{{ url('/registersohib') }}">
                         {{ csrf_field() }}
 
       <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }} has-feedback">
-        <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required autofocus placeholder="Nama Lengkap" autocomplete="off">
+        <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required autofocus placeholder="Nama Pemilik" autocomplete="off">
         <span class="glyphicon glyphicon-user form-control-feedback"></span>
       </div>
       <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }} has-feedback">
-        <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required placeholder="Email" autocomplete="off">
+        <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required placeholder="Email Perusahaan" autocomplete="off">
         <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
-      </div> 
-
-      <div class="form-group{{ $errors->has('tanggal_lahir') ? ' has-error' : '' }} has-feedback">
-        <input id="datepicker" type="text" class="form-control pull-right" name="tanggal_lahir" value="{{ old('tanggal_lahir') }}" required placeholder="Tanggal Lahir" autocomplete="off">
-        <span class="glyphicon glyphicon-calendar form-control-feedback"></span>
-      </div>
-      
-      <div class="form-group{{ $errors->has('id_sekolah') ? ' has-error' : '' }} has-feedback">
-    {!! Form::select('id_sekolah', []+App\DataSekolah::pluck('nama_sekolah','id')->all(), null,['class'=>'form-control select2','style'=>'width: 100%;', 'placeholder' => 'Pilih Sekolah','required']) !!}      
-      </div> <p style="color:red;font-size:12px">Apabila sekolah belum terdaftar,Kirim Masukan <a href="mailto:info@fkar.org?Subject=Tolong%20masukan%20sekolah%20saya%20=%20(nama%20sekolah%20anda)%20" target="_top">Klik DiSini</a></p>
-              
-      <div class="form-group{{ $errors->has('kelas') ? ' has-error' : '' }} has-feedback">
-        {!! Form::select('kelas', ['7 SMP'=>'7 SMP','8 SMP'=>'8 SMP','9 SMP'=>'9 SMP','10 SMA'=>'10 SMA','11 SMA'=>'11 SMA','12 SMA'=>'12 SMA'],null,['class'=>'form-control select2','style'=>'width: 100%;', 'placeholder' => 'Pilih Kelas','required']) !!}  
-      </div>
-        
-      <div class="form-group{{ $errors->has('golongan_darah') ? ' has-error' : '' }} has-feedback">
-        {!! Form::select('golongan_darah', ['O'=>'O','A'=>'A','B'=>'B','AB'=>'AB'],null,['class'=>'form-control select2','style'=>'width: 100%;', 'placeholder' => 'Pilih Golongan Darah','required']) !!}  
-      </div>
-
-      <div class="form-group{{ $errors->has('jenis_kelamin') ? ' has-error' : '' }} has-feedback">
-        {!! Form::select('jenis_kelamin', ['Laki-Laki'=>'Laki-Laki','Perempuan'=>'Perempuan'],null,['class'=>'form-control select2','style'=>'width: 100%;', 'placeholder' => 'Pilih Jenis Kelamin']) !!}  
-      </div>
-
-      <div class="form-group{{ $errors->has('kategori_daftar') ? ' has-error' : '' }} has-feedback">
-        {!! Form::select('kategori_daftar', ['Anggota Baru'=>'Anggota Baru','Anggota Lama'=>'Anggota Lama'],null,['class'=>'form-control select2','style'=>'width: 100%;', 'placeholder' => 'Pilih Kategori Anggota']) !!}  
-      </div>
+      </div>  
 
       <div class="form-group{{ $errors->has('no_wa') ? ' has-error' : '' }} has-feedback">
         <input id="no_wa" type="number" class="form-control" name="no_wa" value="{{ old('no_wa') }}" required autofocus placeholder="Nomor WhatsApp">
         <span class="glyphicon glyphicon-earphone form-control-feedback"></span>
       </div>
       <div class="form-group{{ $errors->has('alamat') ? ' has-error' : '' }} has-feedback"> 
-      {!! Form::textarea('alamat', null, ['class'=>'form-control','rows'=>'2','placeholder'=>'Isi Alamat....']) !!} 
+      {!! Form::textarea('alamat', null, ['class'=>'form-control','rows'=>'2','placeholder'=>'Alamat Perusahaan']) !!} 
         <span class="glyphicon glyphicon-map-marker form-control-feedback"></span>
       </div> 
       <div class="row">

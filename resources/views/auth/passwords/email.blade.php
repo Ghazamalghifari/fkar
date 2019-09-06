@@ -44,6 +44,7 @@
           <div class="col-xs-9" style=" padding-top: 2px;">
             <a><b style="font-size: 50px;color:white;">ROHIS <br></b></a><b style="font-size: 25px;color:white;">BANDAR LAMPUNG</b> 
           </div>
+          
     </div>
   </div>
   @if (session('status'))

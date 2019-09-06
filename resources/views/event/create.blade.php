@@ -24,6 +24,13 @@
               <!-- /.box -->   
     <div class="box-body">
         <div class="form-group">
+            <label for="namaevent" class="col-sm-2 control-label">ID EVENT</label> 
+            <div class="col-sm-6">
+                {!! Form::number('id_event', null, ['class'=>'form-control','placeholder'=>'ID EVENT (menggunakan angka)','id'=>'idevent','autocomplete'=>'off']) !!}
+                {!! $errors->first('id_event', '<p class="help-block">:message</p>') !!} 
+            </div>
+        </div>
+        <div class="form-group">
             <label for="namaevent" class="col-sm-2 control-label">Nama Event</label> 
             <div class="col-sm-6">
                 {!! Form::text('nama_event', null, ['class'=>'form-control','placeholder'=>'Nama Event','id'=>'namaevent','autocomplete'=>'off']) !!}

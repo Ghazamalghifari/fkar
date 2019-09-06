@@ -11,6 +11,8 @@
 |
 */
 Route::post('/cek-rohis', 'CekRohisControllers@cek_rohis');	
+Route::get('/register-sohib', 'SohibControllers@index');	
+Route::post('/registersohib', 'SohibControllers@create');	
 
 Route::get('/', function () {
 	$result = null;
@@ -27,9 +29,11 @@ Route::get('downloadExcel/{type}', 'DataAnggotaControllers@downloadExcel');
 Auth::routes();
 
 Route::group(['middleware' => 'auth'], function(){
+	Route::resource('kupon-sohib', 'KuponSohibControllers'); 
+	Route::resource('data-sohib', 'SohibControllers'); 
 	Route::get('/home', 'HomeController@index');
 	Route::get('/profil', 'HomeController@profil');	
-	Route::get('ikut-event/{id}',[
+	Route::post('ikut-event',[
 		'middleware' => ['auth'],
 		'as' => 'event.ikutevent',
 		'uses' => 'HomeController@ikut_event'
@@ -40,7 +44,7 @@ Route::group(['middleware' => 'auth'], function(){
 		'as' => 'event.history',
 		'uses' => 'HomeController@history_event'
 	]);
-
+   
 	Route::resource('data-anggota', 'DataAnggotaControllers');    
 	Route::get('peserta-event/{id}',[
 		'middleware' => ['auth'],

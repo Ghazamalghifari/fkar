@@ -4,12 +4,11 @@
   <!-- Content Header (Page header) -->
   <section class="content-header">
     <h1>
-    Event {{ $event->nama_event }}
+    Daftar Promo 
     </h1>
     <ol class="breadcrumb">
-      <li><a href="{{ url('/home') }}"><i class="fa fa-dashboard"></i> Dashboard</a></li>  
-      <li><a href="{{ url('/master-data/event') }}">Event</a></li>  
-      <li class="active">Peserta Event</li>
+      <li><a href="{{ url('/home') }}"><i class="fa fa-dashboard"></i> Dashboard</a></li> 
+      <li class="active">Daftar Promo</li>
     </ol>
   </section>
   
@@ -20,7 +19,8 @@
         <div class="col-xs-12">
 @include('layouts._flash') 
           </div>
-        <div class="col-xs-12"> 
+        <div class="col-xs-12">
+    <a class="btn btn-block btn-info btn-flat" href="{{ route('kupon-sohib.create') }}"><i class="fa fa-plus"></i> Tambah</a>
           <div class="box"> 
             <!-- /.box-header -->
             <div class="box-body">  

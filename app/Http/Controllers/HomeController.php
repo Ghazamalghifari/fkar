@@ -32,74 +32,83 @@ class HomeController extends Controller
      */
      public function index(Request $request, Builder $htmlBuilder)
     {
+        
+
+        //halaman admin  
+        $jumlahanggota = User::where('status','anggotarohis')->count();  
+        $datasekolah = DataSekolah::count();
+
+        //halaman member
+        $tanggalsekarang = date('d-m-Y');
         if ($request->ajax()) {
-            $event = Event::select(['id','id_event','nama_event','tanggal_event','jumlah_peserta']);
-            return Datatables::of($event)
-                ->addColumn('action', function($events){  
-                    return view('datatable._actionpesertaevent', [ 
-                        'id_event' => route('event.peserta', $events->id)
-                        ]);
-                })->addColumn('ikutevent', function($ikutevent){  
-                    $peserta = PesertaEvent::where('id_event',$ikutevent->id_events)->first();
-                    return view('datatable._actionpesertaeventjoin', [
-                        'model'    => $ikutevent,  
-                        'id_event' => route('event.peserta', $ikutevent->id),
-                        'confirm_message' => 'Apakah Anda Ingin Mengikuti Event ' . $ikutevent->nama_event . '?'
-                        ]);
+            $peserta = PesertaEvent::with(['event','peserta'])->where('tanggal_event',$tanggalsekarang)->get();
+            return Datatables::of($peserta)
+            ->addColumn('sekolah', function($sekolah){
+                $peserta = User::where('id',$sekolah->id_peserta)->first();
+                $sekolah = DataSekolah::where('id',$peserta->id_sekolah)->first();
+                return $sekolah->nama_sekolah;   
                 })->make(true);
         }
-        $html = $htmlBuilder
-        ->addColumn(['data' => 'id_event', 'name' => 'id_event', 'title' => 'Id Event'])
-         ->addColumn(['data' => 'nama_event', 'name' => 'nama_event', 'title' => 'Nama Event'])
-         ->addColumn(['data' => 'tanggal_event', 'name' => 'tanggal_event', 'title' => 'Tanggal Event'])
-         ->addColumn(['data' => 'jumlah_peserta', 'name' => 'jumlah_peserta', 'title' => 'Jumlah Peserta'])
-         ->addColumn(['data' => 'action', 'name'=>'action','title'=>'Peserta', 'orderable'=>false, 'searchable'=>false])
-         ->addColumn(['data' => 'ikutevent', 'name'=>'ikutevent','title'=>'Status', 'orderable'=>false, 'searchable'=>false]);
+        $html = $htmlBuilder 
+          ->addColumn(['data' => 'peserta.name', 'name' => 'peserta.name', 'title' => 'Nama'])
+          ->addColumn(['data' => 'sekolah', 'name' => 'sekolah', 'title' => 'Sekolah']);
+        $history_event = HistoryEvent::where('id_rohis',Auth::user()->id_rohis)->where('tanggal_kegiatan',$tanggalsekarang)->count();
+        $cek_event = Event::where('tanggal_event',$tanggalsekarang)->count();
 
-        $datasekolah = DataSekolah::count();
-        $jumlahanggota = User::where('status','anggotarohis')->count(); 
-
-        return view('home', ['datasekolah' => $datasekolah,'jumlahanggota' => $jumlahanggota])->with(compact('html'));  
+        return view('home', ['datasekolah' => $datasekolah,'jumlahanggota' => $jumlahanggota,'cek_event' => $cek_event,'history_event' => $history_event])->with(compact('html'));  
     }
 
-    public function ikut_event($id)
+    public function ikut_event(Request $request, Builder $htmlBuilder)
     { 
-        $pesertaevent = PesertaEvent::create([
-            'id_event' => $id,
-            'id_peserta' => Auth::user()->id
-        ]);
-
-        $data_event = Event::select(['id','id_event','nama_event','tanggal_event','jumlah_peserta'])->where('id_event',$id)->first();
-
-        print_r($data_event);
-        exit;
-        $historyevent = HistoryEvent::create([
-            'id_rohis' => Auth::user()->id_rohis,
-            'nama_kegiatan' => $data_event->nama_event,
-            'tanggal_kegiatan' => $data_event->tanggal_event
-        ]);
-        $TambahPesertaEvent = Event::find($id);   
-        $TambahPesertaEvent->jumlah_peserta  +=1 ;
-        $TambahPesertaEvent->save();  
+        $cek_idevent = Event::where('id_event',$request->id_event)->count();
  
-        
-        Session::flash("flash_notification", [
-            "level"=>"success",
-            "message"=>"Anda Berhasil Mengikuti Event $data_event->nama_event"
+        if($cek_idevent  > 0){ 
+            $pesertaevent = PesertaEvent::create([
+                'id_event' => $request->id_event,
+                'id_peserta' => Auth::user()->id,
+                'tanggal_event' => date('d-m-Y')
             ]);
-        return redirect()->back();
+
+            $event = Event::select('id','id_event','nama_event','tanggal_event')->where('id_event',$request->id_event);
+            
+            $tanggalsekarang = date('d-m-Y');
+            HistoryEvent::create([
+                'id_rohis' => Auth::user()->id_rohis,
+                'nama_kegiatan' => $event->first()->nama_event,
+                'tanggal_kegiatan' => $tanggalsekarang ,
+            ]);
+
+            $events = Event::where('id_event',$request->id_event)->first(); 
+            $TambahPesertaEvent = Event::find($events->id);   
+            $TambahPesertaEvent->jumlah_peserta  +=1 ;
+            $TambahPesertaEvent->save();  
+         
+            Session::flash("flash_notification", [
+                "level"=>"success",
+                "message"=>"Anda Berhasil Mengikuti Event "
+                ]);
+            return redirect()->back();
+        }  else{
+
+            Session::flash("flash_notification", [
+                "level"=>"danger",
+                "message"=>"Maaf ID Event yang anda masukan tidak ada"
+                ]);
+            return redirect()->back();
+        } 
     }
 
     public function history_event(Request $request, Builder $htmlBuilder)
     {
         if ($request->ajax()) {
-           $event = HistoryEvent::select(['id','id_rohis','nama_kegiatan','tanggal_kegiatan'])->where('id_rohis',Auth::user()->id_rohis)->get();
-           return Datatables::of($event)->make(true);
-       }
-       $html = $htmlBuilder 
-         ->addColumn(['data' => 'nama_kegiatan', 'name' => 'nama_kegiatan', 'title' => 'Nama Event'])
-         ->addColumn(['data' => 'tanggal_kegiatan', 'name' => 'tanggal_kegiatan', 'title' => 'Tanggal Event']);
-         return view('history_event')->with(compact('html'));   
+            $user = User::find(Auth::user()->id);
+            $event = HistoryEvent::select(['id','id_rohis','nama_kegiatan','tanggal_kegiatan'])->where('id_rohis',$user->id_rohis);
+            return Datatables::of($event)->make(true);
+        }
+        $html = $htmlBuilder 
+          ->addColumn(['data' => 'nama_kegiatan', 'name' => 'nama_kegiatan', 'title' => 'Nama Kegiatan']) 
+          ->addColumn(['data' => 'tanggal_kegiatan', 'name' => 'tanggal_kegiatan', 'title' => 'Tanggal Kegiataan'])  ;
+          return view('history_event')->with(compact('html'));  
      } 
 
     public function profil()

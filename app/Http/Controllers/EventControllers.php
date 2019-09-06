@@ -9,6 +9,7 @@ use Yajra\Datatables\Datatables;
 use Session;
 use App\User;
 use App\PesertaEvent;
+use Illuminate\Support\Str;
 
 class EventControllers extends Controller
 {
@@ -23,7 +24,7 @@ class EventControllers extends Controller
                         'model'    => $events,
                         'form_url' => route('event.destroy', $events->id),
                         'edit_url' => route('event.edit', $events->id),
-                        'id_event' => route('event.peserta', $events->id),
+                        'id_event' => route('event.peserta', $events->id_event),
                         'confirm_message' => 'Yakin Mau Mengapus ' . $events->nama_event . '?'
                         ]);
                 })->make(true);
@@ -45,8 +46,9 @@ class EventControllers extends Controller
         }
         $html = $htmlBuilder
         ->addColumn(['data' => 'peserta.id_rohis', 'name' => 'peserta.id_rohis', 'title' => 'ID Rohis'])
-          ->addColumn(['data' => 'peserta.name', 'name' => 'peserta.name', 'title' => 'Nama']);
-          $event = Event::select(['id','id_event','nama_event','tanggal_event','jumlah_peserta'])->find($id);
+          ->addColumn(['data' => 'peserta.name', 'name' => 'peserta.name', 'title' => 'Nama'])
+          ->addColumn(['data' => 'created_at', 'name' => 'created_at', 'title' => 'Waktu Daftar']);
+          $event = Event::select(['id','id_event','nama_event','tanggal_event','jumlah_peserta'])->where('id_event',$id)->first();
           return view('event.peserta', ['event' => $event])->with(compact('html'));   
       }
 
@@ -59,17 +61,12 @@ class EventControllers extends Controller
     { 
         $this->validate($request,['nama_event'=>'required|unique:events,nama_event']);
         
-        
         $event = Event::create([
+            'id_event' => $request['id_event'],
             'nama_event' => $request['nama_event'],
             'tanggal_event' => $request['tanggal_event']
         ]);
-        
-        $tahun = date('Y');
-        $idevent = "$event->id$tahun"; 
-        $event = Event::where('id',$event->id)->first();   
-        $event->id_event  = $idevent; 
-        $event->save();   
+         
 
         Session::flash("flash_notification",[
             "level"=>"success",

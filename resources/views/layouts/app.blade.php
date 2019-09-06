@@ -126,6 +126,12 @@
         <a href="{{ url('home') }}"><i class="fa fa-dashboard"></i>Dashboard</a> 
       </li> 
 
+      @role('sohib')  
+      <li class="tree">
+        <a href="{{ url('kupon-sohib') }}"><i class="fa fa-calendar"></i>Daftar Promo</a> 
+      </li> 
+      @endrole
+      
       @role('member')  
       <li class="tree">
         <a href="{{ route('event.history') }}"><i class="fa fa-calendar"></i>History Event</a> 
@@ -135,6 +141,9 @@
       @role('admin')  
       <li class="tree">
         <a href="{{ url('data-anggota') }}"><i class="fa fa-dashboard"></i>Anggota Rohis</a> 
+      </li> 
+      <li class="tree">
+        <a href="{{ url('data-sohib') }}"><i class="fa fa-dashboard"></i>Anggota Sohib</a> 
       </li> 
       <li class="tree">
         <a href="{{ route('event.index') }}"><i class="fa fa-calendar"></i>Event</a> 
@@ -223,14 +232,12 @@
     })
   })
 </script>
-<script type="text/javascript">
-
+<script type="text/javascript"> 
 $('.date').datepicker({  
-
-   format: 'mm/dd/yyyy'
+   format: 'dd-mm-yyyy'
 
  });  
-
+ $('.date').datepicker('setStartDate', new Date());
 </script>  
 </body>
 </html>

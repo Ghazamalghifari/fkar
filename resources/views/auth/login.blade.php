@@ -77,7 +77,7 @@
  
 
     <a href="{{ url('/password/reset') }}">Saya lupa kata sandi saya</a><br>
-    <a href="{{ url('/register') }}" class="text-center">Daftar Sebagai Anggota Rohis.</a>
+    <a href="{{ url('/register') }}" class="text-center"><b style="color:red"> Belum Punya Akun Rohis? </b><br> Daftar Sebagai Anggota Rohis.</a>
 
   </div>
   <br> 
@@ -102,7 +102,7 @@
     </form> 
   </div>
   <!-- /.login-box-body --> 
-  @if($result == null)  
+  @if($result == null)    
   @else
 
 <div class="login-box-body">   
