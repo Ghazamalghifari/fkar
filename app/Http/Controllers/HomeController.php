@@ -73,6 +73,7 @@ class HomeController extends Controller
             
             $tanggalsekarang = date('d-m-Y');
             HistoryEvent::create([
+                'id_event' => $event->first()->id_event,
                 'id_rohis' => Auth::user()->id_rohis,
                 'nama_kegiatan' => $event->first()->nama_event,
                 'tanggal_kegiatan' => $tanggalsekarang ,

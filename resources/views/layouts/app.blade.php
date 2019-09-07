@@ -136,6 +136,9 @@
       <li class="tree">
         <a href="{{ route('event.history') }}"><i class="fa fa-calendar"></i>History Event</a> 
       </li> 
+      <li class="tree">
+        <a href="{{ url('promo-rohis') }}"><i class="fa fa-calendar"></i>Promo</a> 
+      </li> 
       @endrole
 
       @role('admin')  

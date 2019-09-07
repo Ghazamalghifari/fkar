@@ -68,5 +68,17 @@ class KuponSohibControllers extends Controller
     public function edit($id)
     {
         //
+        $kuponsohib = KuponSohib::find($id);
+        if($kuponsohib->status == 0 ){
+            $editKuponSohib = KuponSohib::find($id);    
+            $editKuponSohib->status  = 1 ;
+            $editKuponSohib->save();
+        }
+        else{ 
+            $editKuponSohib = KuponSohib::find($id);    
+            $editKuponSohib->status  = 0 ;
+            $editKuponSohib->save();
+        }
+        return redirect()->route('kupon-sohib.index');
     }
 }

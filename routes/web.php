@@ -31,6 +31,7 @@ Auth::routes();
 Route::group(['middleware' => 'auth'], function(){
 	Route::resource('kupon-sohib', 'KuponSohibControllers'); 
 	Route::resource('data-sohib', 'SohibControllers'); 
+	Route::resource('promo-rohis', 'PromoRohisControllers'); 
 	Route::get('/home', 'HomeController@index');
 	Route::get('/profil', 'HomeController@profil');	
 	Route::post('ikut-event',[
