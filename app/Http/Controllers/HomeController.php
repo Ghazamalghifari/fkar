@@ -30,10 +30,7 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-     public function index(Request $request, Builder $htmlBuilder)
-    {
-        
-
+    public function index(Request $request, Builder $htmlBuilder) {
         //halaman admin  
         $jumlahanggota = User::where('status','anggotarohis')->count();  
         $datasekolah = DataSekolah::count();
@@ -49,13 +46,17 @@ class HomeController extends Controller
                 return $sekolah->nama_sekolah;   
                 })->make(true);
         }
-        $html = $htmlBuilder 
-          ->addColumn(['data' => 'peserta.name', 'name' => 'peserta.name', 'title' => 'Nama'])
-          ->addColumn(['data' => 'sekolah', 'name' => 'sekolah', 'title' => 'Sekolah']);
+        $html = $htmlBuilder->addColumn(['data' => 'peserta.name', 'name' => 'peserta.name', 'title' => 'Nama'])
+                            ->addColumn(['data' => 'sekolah', 'name' => 'sekolah', 'title' => 'Sekolah']);
         $history_event = HistoryEvent::where('id_rohis',Auth::user()->id_rohis)->where('tanggal_kegiatan',$tanggalsekarang)->count();
         $cek_event = Event::where('tanggal_event',$tanggalsekarang)->count();
 
-        return view('home', ['datasekolah' => $datasekolah,'jumlahanggota' => $jumlahanggota,'cek_event' => $cek_event,'history_event' => $history_event])->with(compact('html'));  
+        return view('home', [
+            'datasekolah' => $datasekolah,
+            'jumlahanggota' => $jumlahanggota,
+            'cek_event' => $cek_event,
+            'history_event' => $history_event
+        ])->with(compact('html'));  
     }
 
     public function ikut_event(Request $request, Builder $htmlBuilder)
