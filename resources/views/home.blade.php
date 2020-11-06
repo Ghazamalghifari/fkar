@@ -11,8 +11,16 @@
 
           <div class="col-xs-12">
 @role('member')   
-@if($cek_event == 0 )
-<p>Segera Gabung Pelatihan Gratis Khusus Untuk Anggota Rohis Baru Klik Di <a href="https://chat.whatsapp.com/KZtfbVvYrrm2H9WkgqMtkc">SINI</a></p>
+@if($cek_event == 0 ) 
+          <div class="box"> 
+            <!-- /.box-header -->
+            <div class="box-body">  
+            <p>Segera Gabung Pelatihan Gratis Khusus Untuk Anggota Rohis Baru Klik Di <a href="https://chat.whatsapp.com/KZtfbVvYrrm2H9WkgqMtkc" target="_blank">SINI</a></p>
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box --> 
+
 <center><h3>Tidak Ada Event Hari Ini.</h3></center>
 @else
   <!-- Main content --> 
